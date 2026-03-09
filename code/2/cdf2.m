@@ -1,5 +1,4 @@
-function [f] = cdf2(x, y)
-    h = x(2) - x(1);
+function [f] = cdf2(y, h)
     len = length(y);
 
     f = zeros(1, len);
