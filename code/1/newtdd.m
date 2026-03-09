@@ -1,3 +1,0 @@
-function newtdd a = newtdd (t, c, n)
-    ...
-end
