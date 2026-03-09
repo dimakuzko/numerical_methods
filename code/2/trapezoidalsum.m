@@ -1,8 +1,7 @@
-function T = trapezoidalsum(f,a,b,N)
-    h = (b - a)/N;
-    T = f(a) + f(b);
-    for k = 1:N-1
-        T = T+2*f(a+k*h);
+function T = trapezoidalsum(f, N, h)
+    T = f(1) + f(length(f));
+    for k = 2:N
+        T = T + 2*f(k);
     end
-    T = T*(h/2);
+    T = T * (h/2);
 end
