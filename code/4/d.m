@@ -2,7 +2,7 @@ clear all; clc; format long;
 
 a = 0;
 b = 180;
-tau = 2;
+tau = 12;
 N = (b - a) / tau; 
 
 beta = 0.4;
