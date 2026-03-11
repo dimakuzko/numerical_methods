@@ -16,6 +16,10 @@ trapezoidalsum = trapezoidalsum(lnf2, N, h);
 simpsonsum = simpsonsum(lnf2, N, h);
 
 exact = 2.871201010907891;
+trap_err = abs(exact - trapezoidalsum);
+simp_err = abs(exact - simpsonsum);
 
-trap_err = abs(exact - trapezoidalsum)
-simp_err = abs(exact - simpsonsum)
+display(trapezoidalsum);
+display(simpsonsum);
+display(trap_err);
+display(simp_err);

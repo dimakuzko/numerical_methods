@@ -10,7 +10,7 @@ alpha = 0.035;
 gamma = 0.005;
 pop = 1000;
 
-f = @(t, y) [
+F = @(t, y) [
     -(beta/pop) * y(2) * y(1);
     (beta/pop) * y(2) * y(1) - alpha * y(2) - gamma * y(2);
     alpha * y(2);
@@ -19,7 +19,7 @@ f = @(t, y) [
 
 y0 = [997; 3; 0; 0];
 
-[t, y] = heun(f, a, b, y0, N);
+[t, y] = heun(F, a, b, y0, N);
 
 S = y(:,1);
 I = y(:,2);
