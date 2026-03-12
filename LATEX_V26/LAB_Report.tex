@@ -361,34 +361,136 @@ As an initial guesses we will use $p_0 = 0$ and $p_1 = \pi/4$
 \end{itemize}
 
 \vspace{5pt}
-\noindent \textbf{Order of convergence}
+\noindent \textbf{Calculation of the order of convergence}
 
-\textbf{Definition of convergence:}
+To measure how fast a numerical method finds the exact root, we calculate the order of convergence, $\alpha$. Here is the step-by-step derivation used to find the formula for $\alpha$.
+
+\vspace{5pt}
+\noindent \textbf{Step 1: Define the error relationship}
+
+The order of convergence links the error at the next step ($e_{n+1}$) to the error at the current step ($e_n$). This relationship uses an unknown constant number, $C$. The starting formula is:
+\begin{equation*}
+    |e_{n+1}| \approx C |e_n|^\alpha
+\end{equation*}
+
+\vspace{5pt}
+\noindent \textbf{Step 2: Use logarithms to separate variables}
+
+We want to find $\alpha$, but we do not know the value of $C$. To fix this, we take the natural logarithm ($\ln$) of both sides of the equation. This gives our first main equation:
+\begin{equation*}
+    \ln(|e_{n+1}|) \approx \ln(C) + \alpha \ln(|e_n|)
+\end{equation*}
+
+\vspace{5pt}
+\noindent \textbf{Step 3: Write the equation for the previous step}
+
+This mathematical rule also works for the step right before it. We write a second equation using the error from the previous step ($e_{n-1}$):
+\begin{equation*}
+    \ln(|e_n|) \approx \ln(C) + \alpha \ln(|e_{n-1}|)
+\end{equation*}
+
+\vspace{5pt}
+\noindent \textbf{Step 4: Subtract to remove the constant}
+
+We subtract the second equation from the first equation. Because both equations share the term $\ln(C)$, this unknown constant is removed completely from the math:
+\begin{equation*}
+    \ln(|e_{n+1}|) - \ln(|e_n|) \approx \alpha \big( \ln(|e_n|) - \ln(|e_{n-1}|) \big)
+\end{equation*}
+
+\vspace{5pt}
+\noindent \textbf{Step 5: Find the final formula} \\
+Finally, we use standard logarithm rules to group the terms. We isolate $\alpha$ by dividing both sides. This gives the exact formula to calculate the order of convergence using our lab data:
+\begin{equation}
+    \alpha \approx \frac{\ln(|e_{n+1}|/|e_n|)}{\ln(|e_n|/|e_{n-1}|)}
+\end{equation}
 
 For Newton-Raphson method, for both $p_0$ and $p_1$ initial guesses the order of convergence is quadratic. We can also observe that based on the estimation on every step:
 
 For $p_0$:
 \begin{itemize}
-    \item Step: 3 Estimated Alpha = 1.4262
-    \item Step: 4 Estimated Alpha = 1.6712
-    \item Step: 5 Estimated Alpha = 1.9645
-    \item Step: 6 Estimated Alpha = 1.999
-    \item Step: 7 Estimated Alpha = 1.1319
+    \item step 3: Estimated Alpha = 1.4262
+    \item step 4: Estimated Alpha = 1.6712
+    \item step 5: Estimated Alpha = 1.9645
+    \item step 6: Estimated Alpha = 1.999
+    \item step 7: Estimated Alpha = 1.1319
 \end{itemize}
 
 For $p_1$:
 \begin{itemize}
-    \item Step: 3 Estimated Alpha = 2.3559
-    \item Step: 4 Estimated Alpha = 1.4325
-    \item Step: 5 Estimated Alpha = 1.6651
-    \item Step: 6 Estimated Alpha = 1.9633
-    \item Step: 7 Estimated Alpha = 1.9989
-    \item Step: 8 Estimated Alpha = 1.1573
+    \item step 3 Estimated Alpha = 2.3559
+    \item step 4 Estimated Alpha = 1.4325
+    \item step 5 Estimated Alpha = 1.6651
+    \item step 6 Estimated Alpha = 1.9633
+    \item step 7 Estimated Alpha = 1.9989
+    \item step 8 Estimated Alpha = 1.1573
 \end{itemize}
 
 On the last step the value of Alpha significantly decreasing because
 of the limited machine precision. The errors are sufficiently small
 that machine evaluating their ratio as almost the same.
+
+
+\subsubsection{Theory of the Secant Method} \cite{Sauer2014}
+
+The Secant Method is a popular technique to find the root of an equation. It is very similar to Newton's Method, but it is easier to use because it does not require calculating the exact derivative of the function.
+
+\vspace{5pt}
+\noindent \textbf{How it Works:}
+
+Newton's Method uses a tangent line at one point to find the next guess. The Secant Method replaces this with a ``secant line.'' A secant line is a straight line drawn through the two most recent guess points on the function's graph. The point where this line crosses the zero level becomes the new guess.
+
+\vspace{5pt}
+\noindent \textbf{The Formula:}
+
+To calculate the next approximation ($x_{i+1}$), the method uses the difference between the last two points instead of a derivative:
+\begin{equation}
+    x_{i+1} = x_i - \frac{f(x_i)(x_i - x_{i-1})}{f(x_i) - f(x_{i-1})}
+\end{equation}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25 \textwidth]{img/figure_1_11.png}
+    \caption{Two steps of the Secant Method. Illustration of Example 1.16. Starting with $x_0 = 0$ and $x_1 = 1$, the Secant Method iterates are plotted along with the secant lines.}
+    \label{fig:1.11}
+\end{figure}
+
+\subsubsection{Application of the Secant}
+
+In this section we will apply Secant in order to solve non-linear equation from our initial problem.
+
+As an initial guesses we will use $p_0 = 0$ and $p_1 = \pi/4$
+
+\vspace{5pt}
+\noindent \textbf{Results obtained from the code}
+\begin{itemize}
+    \item Approximated initial angle: $\theta \approx 0.6567089205736352$
+    \item Number of iterations: $n = 10$
+\end{itemize}
+
+\vspace{5pt}
+\noindent \textbf{Calculation of the order of convergence}
+
+To calculate the order of convergence we used the same logic and formulas that were described in the previous section.
+
+For Secant method, the order of convergence was "super" linear ($\alpha \approx 1.6125$). We can also observe that based on the estimation on every step:
+
+\begin{itemize}
+    \item step 3 Estimated Alpha = -0.23153
+    \item step 4 Estimated Alpha = 6.131
+    \item step 5 Estimated Alpha = 0.58335
+    \item step 6 Estimated Alpha = 2.3024
+    \item step 7 Estimated Alpha = 1.5636
+    \item step 8 Estimated Alpha = 1.6302
+    \item step 9 Estimated Alpha = 1.6125
+    \item step 10 Estimated Alpha = Inf
+\end{itemize}
+
+On the last step the value of Alpha significantly decreasing because
+of the limited machine precision.
+
+
+
+
 
 
 
