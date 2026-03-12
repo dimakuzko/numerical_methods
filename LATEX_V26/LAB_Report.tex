@@ -220,14 +220,13 @@ In the first interval $[0, \pi/4]$, the function is continuous, changes sign, an
 In the second interval $[\pi/4, \pi/2)$, the function is continuous, changes sign, and strictly decreases through the zero line. This proves there is exactly one root here as well.
 
 
-
-\subsubsection{Theory of the Bisection Method}
+% TODO: INTEGRATE CITATION
+\subsubsection{Theory of the Bisection Method} \cite{Sauer2014}
 
 The Bisection Method is a simple and reliable way to find the root of an equation. It works by dividing an interval in half over and over again. You do not need a full plot of the function to use it.
 
 \newpage
-% TODO: INTEGRATE CITATION
-\textbf{Step-by-Step Process:} \cite{Sauer2014}
+\textbf{Step-by-Step Process:}
 \begin{itemize}
     \item \textbf{Start with an interval:} Choose a starting interval $[a, b]$. The function values at the edges, $f(a)$ and $f(b)$, must have opposite signs. This means $f(a)f(b) < 0$. This guarantees that a root exists inside the interval.
     
@@ -288,6 +287,110 @@ This means that the Bisection Method has linear convergence. The error decreases
     \item Approximated initial angle: $\theta \approx 0.6567089205736349$
     \item Number of iterations: $n = 50$
 \end{itemize}
+
+\subsubsection{Theory of the Newton-Raphson Method} \cite{Sauer2014}
+
+Newton’s Method, also called the Newton–Raphson Method, usually converges much faster
+than the linearly convergent methods we have seen previously. The geometric picture
+of Newton’s Method is shown in Figure 1.8. To find a root of $f(x) = 0$, a starting
+guess $x_0$ is given, and the tangent line to the function $f$ at $x_0$ is drawn. The
+tangent line will approximately follow the function down to the x-axis toward the
+root. The intersection point of the line with the x-axis is an approximate root, but
+probably not exact if $f$ curves. Therefore, this step is iterated.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25 \textwidth]{img/figure_1_8}
+    \caption{One step of Newton’s Method. Starting with x0, the tangent line to the
+curve y = f(x) is drawn. The intersection point with the x-axis is x1, the next approximation to the root.}
+    \label{fig:1.8}
+\end{figure}
+
+From the geometric picture, we can develop an algebraic formula for
+Newton’s Method. The tangent line at $x_0$ has slope given by the
+derivative $f(x_0)$. One point on the tangent line is $(x_0, f(x_0))$.
+The point-slope formula for the equation of a line is:
+\begin{equation}
+    y - f(x_0) = f'(x_0)(x - x_0)
+\end{equation}
+so that looking for the intersection point of the tangent line with
+the x-axis is the same as substituting $y = 0$ in the line:
+\begin{equation}
+    f'(x_0)(x - x_0) = 0 - f(x_0)
+\end{equation}
+\begin{equation}
+    x - x_0 = -\frac{f(x_0)}{f'(x_0)}
+\end{equation}
+\begin{equation}
+    x = x_0 - \frac{f(x_0)}{f'(x_0)}
+\end{equation}
+
+Solving for $x$ gives an approximation for the root, which we call $x_1$. Next, the entire process is repeated, beginning with $x_1$, to produce $x_2$, and so on, yielding the following iterative formula:
+
+\begin{equation}
+    x_0 = \text{initial guess}
+\end{equation}
+\begin{equation}
+    x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)} \quad \text{for} \quad i = 0, 1, 2, \dots
+\end{equation}
+
+\subsubsection{Application of the Newton–Raphson}
+
+In this section we will apply Newton–Raphson in order to solve non-linear equation from our initial problem.
+
+As an initial guesses we will use $p_0 = 0$ and $p_1 = \pi/4$
+
+\vspace{5pt}
+\noindent \textbf{Results obtained from the code}
+\begin{itemize}
+    \item Approximated initial angle:
+    \begin{itemize}
+        \item $p_0 = 0 \text{ approximation}$: $\theta \approx 0.6567089205736348$
+        \item $p_1 = \pi/4 \text{ approximation}$: $\theta \approx 0.6567089205736348$
+    \end{itemize}
+    \item Number of iterations:
+    \begin{itemize}
+        \item $p_0 = 0 \text{ iterations}$: $n = 7$
+        \item $p_1 = \pi/4 \text{ iterations}$: $n = 8$
+    \end{itemize}
+    \item Error comparing to the result obtained in Bisection Method part: 
+    \begin{itemize}
+        \item $p_0 = 0 \text{ error}$: 1.110223024625157e-16
+        \item $p_1 = \pi/4 \text{ error}$: 1.110223024625157e-16
+    \end{itemize}
+\end{itemize}
+
+\vspace{5pt}
+\noindent \textbf{Order of convergence}
+
+\textbf{Definition of convergence:}
+
+For Newton-Raphson method, for both $p_0$ and $p_1$ initial guesses the order of convergence is quadratic. We can also observe that based on the estimation on every step:
+
+For $p_0$:
+\begin{itemize}
+    \item Step: 3 Estimated Alpha = 1.4262
+    \item Step: 4 Estimated Alpha = 1.6712
+    \item Step: 5 Estimated Alpha = 1.9645
+    \item Step: 6 Estimated Alpha = 1.999
+    \item Step: 7 Estimated Alpha = 1.1319
+\end{itemize}
+
+For $p_1$:
+\begin{itemize}
+    \item Step: 3 Estimated Alpha = 2.3559
+    \item Step: 4 Estimated Alpha = 1.4325
+    \item Step: 5 Estimated Alpha = 1.6651
+    \item Step: 6 Estimated Alpha = 1.9633
+    \item Step: 7 Estimated Alpha = 1.9989
+    \item Step: 8 Estimated Alpha = 1.1573
+\end{itemize}
+
+On the last step the value of Alpha significantly decreasing because
+of the limited machine precision. The errors are sufficiently small
+that machine evaluating their ratio as almost the same.
+
+
 
 \begin{figure}[h]
     \centering
