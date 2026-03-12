@@ -1,0 +1,230 @@
+\documentclass{article}
+\usepackage{mathtools}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb, 
+  language=MATLAB,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
+\begin{document}
+\begin{titlepage}
+
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
+
+\center 
+
+\textsc{\LARGE M{\"a}lardalen University}\\[1.5cm] 
+\textsc{\Large MAA069} \\[0.2cm] 
+\textsc{\Large Numerical Methods with MATLAB} \\[0.5cm] 
+\textsc{\large Spring 2026}\\[0.5cm] 
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Laboratory report}\\[0.4cm] 
+\HRule \\[1.5cm]
+ 
+\begin{minipage}{0.4\textwidth}
+\begin{flushleft} \large
+\emph{Author(s):} \\
+Firstname \textsc{Lastname} \\ % Student's name
+Firstname \textsc{Lastname} \\ [0.2cm] % Student's name
+\emph{Lab Group:} % enter group number here
+\end{flushleft}
+\end{minipage}
+~
+\begin{minipage}{0.4\textwidth}
+\begin{flushright} \large
+\emph{Instructor:} \\
+Maksat \textsc{Ashyralyyev} 
+\end{flushright}
+\end{minipage} \\ [3cm]
+
+{\large \today} \\ [2cm] % Date, change the \today to a set date if you want to be precise
+
+\includegraphics[scale=0.3]{./MDU_logo.png} \\ [0.5cm] 
+ 
+\vfill 
+
+\end{titlepage}
+
+% Here your report starts
+
+\section{Solving Nonlinear Algebraic Equation}
+
+Describe here the problem which is being investigated in this part. If you want you can copy the text from the lab assignment.  
+
+\subsection{Solution \& Results}
+
+In this section give a theoretical background, describe how you solved the given problem and present your results.
+
+Use the standard \verb|equation| environment to typeset your equations, e.g.
+\begin{equation}
+a \times b = c.
+\end{equation}
+For multiline equations we recommend to use the \verb|eqnarray|
+environment.
+\begin{eqnarray}
+a \times b = c \nonumber \\
+\vec{a} \cdot \vec{b}=\vec{c}
+\label{eq:01}
+\end{eqnarray}
+
+All tables/figures should be enumerated and named with a descriptive title (look at the examples given below).
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.25 \textwidth]{bank}
+    \caption{Please write your figure caption here.}
+    \label{fig:1}
+\end{figure}
+
+Also, all the results presented in tables/figures should be explained in the main text. For example: “In Figure~\ref{fig:1}, the sine function in the range from 0 to $2\pi$ is shown”, or: “The exact and approximate derivatives of the function $f(x)$ for different values of $x$ are given in Table~\ref{tab:1}”.
+
+\begin{table}[ht] 
+\centering
+\renewcommand{\arraystretch}{1.4}
+\caption{Please write your table caption here.}
+\label{tab:1}       % Give a unique label
+\begin{tabular}{|c|c|c|c|}
+\hline
+Classes & Subclass & Length & Action  \\
+\hline \hline
+Translation & mRNA$^a$  & 22 (19--25) & Action 1 to be taken \\ \hline
+Translation & mRNA cleavage & 21 & Action 2 to be taken \\ \hline
+Translation & mRNA  & 21--22 & Action 3 to be taken \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{Conclusions}
+
+Here you should discuss obtained results and give corresponding conclusions.
+
+\newpage
+
+\section{Numerical Differentiation \& Numerical Integration}
+
+Describe here the problem which is being investigated in this part. If you want you can copy the text from the lab assignment.  
+
+\subsection{Solution \& Results}
+
+In this section give a theoretical background, describe how you solved the given problem and present your results.
+
+\subsection{Conclusions}
+
+Here you should discuss obtained results and give corresponding conclusions.
+
+\newpage
+
+
+\section{Interpolation \& Curve Fitting}
+
+Describe here the problem which is being investigated in this part. If you want you can copy the text from the lab assignment.  
+
+\subsection{Solution \& Results}
+
+In this section give a theoretical background, describe how you solved the given problem and present your results.
+
+\subsection{Conclusions}
+
+Here you should discuss obtained results and give corresponding conclusions.
+
+
+\newpage
+
+
+\section{Numerical Solution of Differential Equations}
+
+Describe here the problem which is being investigated in this part. If you want you can copy the text from the lab assignment.  
+
+\subsection{Solution \& Results}
+
+In this section give a theoretical background, describe how you solved the given problem and present your results.
+
+\subsection{Conclusions}
+
+Here you should discuss obtained results and give corresponding conclusions.
+
+\newpage
+
+\section*{Declaration of AI Use}
+
+All uses (if any) of AI tools must be declared here. The declaration must include:
+\begin{itemize}
+\item A statement that AI tools were used and what they were used for (e.g., learning purposes, grammar editing, brainstorming, structuring).
+\item A confirmation that the students retain full responsibility for all content.
+\item A clear statement that AI was not used to generate solutions of problems, MATLAB codes, analysis and  discussion of results.
+\end{itemize}
+
+\newpage
+
+\section*{References}
+
+List all references which you have used. 
+
+\newpage
+
+\section*{Appendix} 
+
+You have to include all your MATLAB functions and scripts here. 
+Do not include MATLAB codes as images from a print screen or similar.  Enter your code using the syntax shown below. 
+
+\subsection*{MATLAB codes for Solving Nonlinear Algebraic Equation}
+
+\begin{lstlisting}
+% Matlab script for solving nonlinear algebraic equation
+close all; clear all; clc;
+f=@(x) x.^x;
+\end{lstlisting}
+
+\bigskip 
+
+\subsection*{MATLAB codes for Numerical Differentiation \& Numerical Integration}
+
+\begin{lstlisting}
+% Matlab script for numerical integration
+close all; clear all; clc;
+f=@(x) x.^x;
+\end{lstlisting}
+
+\bigskip 
+
+\subsection*{MATLAB codes for Interpolation \& Curve Fitting}
+
+\begin{lstlisting}
+% Matlab script for curve fitting
+x=linspace(0,1,100);
+y=x.^3-7*x.^2+14*x-6;
+plot(x,y)
+\end{lstlisting}
+
+\bigskip
+
+\subsection*{MATLAB codes for Numerical Solution of Differential Equations}
+
+\begin{lstlisting}
+% Matlab script for numerical solution of differential equation
+close all; clear all; clc;
+f=@(x) x.^x;
+\end{lstlisting}
+
+
+\end{document}
