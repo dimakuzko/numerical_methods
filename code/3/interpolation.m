@@ -16,6 +16,6 @@ ylabel('Value');
 grid on;
 
 hold on;
-plot(0, f0, 'wx', 'MarkerSize', 10, 'LineWidth', 2);
-plot(t, c, 'ro', 'MarkerSize', 6, 'LineWidth', 2);
+plot(0, f0, 'rx', 'MarkerSize', 10);
+plot(t, c, 'ro');
 hold off;

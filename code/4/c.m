@@ -26,10 +26,11 @@ I = y(:,2);
 R = y(:,3);
 D = y(:,4);
 
+figure; hold on; grid on;
 plot(t, S, 'b')
-hold on
 plot(t, I, 'r')
 plot(t, R, 'g')
-plot(t, D, 'k')
+plot(t, D, 'w')
 
 legend('S', 'I', 'R', 'D')
+hold off;

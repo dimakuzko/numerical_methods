@@ -25,15 +25,15 @@ predicted_e_plot = a_exp * exp(b_exp * linpoints);
 rms_l = rms(predicted_l - c);
 rms_e = rms(predicted_e - c);
 
-display("t=0 approx (linear): " + predicted_l_value);
-display("t=0 approx (exp): " + predicted_e_value);
-display("rms error (linear): " + rms_l);
-display("rms error (exp): " + rms_e);
+disp(['t=0 approx (linear): ', num2str(predicted_l_value)])
+disp(['t=0 approx (exp): ', num2str(predicted_e_value)])
+disp(['rms error (linear): ', num2str(rms_l)])
+disp(['rms error (exp): ', num2str(rms_e)])
 
 figure; hold on; grid on;
-plot(t, c, 'ro', 'MarkerSize', 6);
-plot(linpoints, predicted_l_plot, 'b-', 'LineWidth', 1.5);
-plot(linpoints, predicted_e_plot, 'g-', 'LineWidth', 1.5);
+plot(t, c, 'ro');
+plot(linpoints, predicted_l_plot, 'b-');
+plot(linpoints, predicted_e_plot, 'g-');
 
 xlabel('Time');
 ylabel('Concentration');
