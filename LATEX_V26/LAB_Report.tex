@@ -93,7 +93,7 @@ Consider the problem of finding the initial angle $\theta$ so that the ball is s
 \subsection{Solution \& Results}
 \subsubsection{Extract non-linear equation}
 
-\noindent \textbf{Step 1: Identify Boundary Conditions and System Parameters}
+\noindent \textbf{Step 1: identify boundary conditions and system parameters}
 
 Based on the problem description, the following parameters and conditions are given for the moment the ball hits the target:
 \begin{itemize}
@@ -104,14 +104,14 @@ Based on the problem description, the following parameters and conditions are gi
     \item Gravitational acceleration ($g$): $9.81 \mathrm{~m/s^2}$
 \end{itemize}
 
-\noindent \textbf{Step 2: Substitute Parameters into the Model}
+\noindent \textbf{Step 2: substitute parameters into the model}
 
 Inserting the given values into the trajectory equation gives us:
 \begin{equation}
     0 = 90 \tan\theta - \frac{9.81 \cdot 90^2}{2 \cdot 30^2 \cos^2\theta} + 1
 \end{equation}
 
-\noindent \textbf{Step 3: Simplify the Mathematical Expression}
+\noindent \textbf{Step 3: simplify the mathematical expression}
 
 Evaluate the constant term within the equation:
 \begin{equation}
@@ -123,20 +123,20 @@ Substitute the simplified constant back into the equation:
     0 = 90 \tan\theta - \frac{44.145}{\cos^2\theta} + 1
 \end{equation}
 \newpage
-\noindent \textbf{Step 4: Formulate the Final Equation}
+\noindent \textbf{Step 4: formulate the final equation}
 
-To express this as a non-linear algebraic equation, we need to simplify current equation. For that we can apply the trigonometric equation:
+To get a non-linear algebraic equation, we need to simplify current equation. For that we can apply the trigonometric equation:
 \begin{equation}
 \frac{1}{\cos^2\theta} = 1 + \tan^2\theta
 \end{equation}
 
-With that let's express the equation in simplified form:
+With that let's use in the current equation in simplified form:
 \begin{align}
     0 &= 90 \tan\theta - 44.145(1 + \tan^2\theta) + 1 \\
     0 &= -44.145 \tan^2\theta + 90 \tan\theta - 43.145
 \end{align}
 
-The non-linear algebraic equation to be solved:
+Final non-linear algebraic equation:
 \begin{equation}
     f(\theta) = -44.145 \tan^2\theta + 90 \tan\theta - 43.145 = 0
 \end{equation}
@@ -145,14 +145,14 @@ The non-linear algebraic equation to be solved:
 
 \noindent \textbf{Step 1: Check the function signs at the interval edges}
 
-We need to calculate the value of our function
+\noindent We need to calculate the value of our function
 \begin{equation}
 f(\theta) = -44.145 \tan^2\theta + 90 \tan\theta - 43.145
 \end{equation}
 at the boundaries of our intervals.
 
 \begin{align*}
-    \textbf{First Interval $[0, \pi/4]$}
+    \textbf{First interval $[0, \pi/4]$}
 \end{align*}
 At $\theta = 0$: \\
 The value of $\tan(0) = 0$. The result:
@@ -172,7 +172,7 @@ The result is \textbf{positive}.
 \textbf{Result:} The function has different signs on the edges of the interval $[0, \pi/4]$.
 
 \begin{align*}
-    \textbf{Second Interval $[\pi/4, \pi/2)$}
+    \textbf{Second interval $[\pi/4, \pi/2)$}
 \end{align*}
 At $\theta = \pi/4$, we already know the value is positive and equals to 2.71.
 As $\theta$ gets closer to $\pi/2$ - $\tan(\theta)$ goes to infinity. The squared term $-44.145 \times \tan^2\theta$ grows very fast and is also negative. This gives us that the function value goes to $-\infty$.
@@ -197,27 +197,27 @@ The derivative of our function is:
 We use the first derivative to show the function only decreasing or increasing on the interval when crossing zero. This monotonicity proves there is only one root per interval.
 
 \begin{align*}
-    \textbf{First Interval $[0, \pi/4]$}
+    \textbf{First interval $[0, \pi/4]$}
 \end{align*}
 
-Here, $\tan\theta$ is between $0$ and $1$. This makes the term $(90 - 88.29 \tan\theta)$ always positive. Because $f'(\theta) > 0$, the function is strictly increasing across the whole interval.
+Here, $\tan\theta$ is between $0$ and $1$. This makes the term $(90 - 88.29 \tan\theta)$ always positive. Because $f'(\theta) > 0$ on the whole interval, the function is strictly increasing on that interval.
 
 \begin{align*}
-    \textbf{Second Interval $[\pi/4, \pi/2)$}
+    \textbf{Second interval $[\pi/4, \pi/2)$}
 \end{align*}
 
-We set $f'(\theta) = 0$ to find the highest point.
+Consider $f'(\theta) = 0$ to find the highest point.
 This peak happens when $\tan\theta\approx 1.019$. This angle is just a little past $\pi/4$. Between $\pi/4$ and $\pi/2$, the sign of the derivative actually changes. Right at $\pi/4$, the derivative is still positive. But at $\theta = \pi/4$, we already know the value is positive and equals to 2.71. It means that function starting from the positive value, then slightly increasing. It hits the peak. After the peak, the term $(90 - 88.29 \tan\theta)$ drops below zero. This makes the whole derivative negative. Because the derivative stays negative after the peak, the graph keeps going down until it crosses the x-axis.
 
 
 \vspace{5pt}
-\noindent \textbf{Step 4: Final Conclusion}
+\noindent \textbf{Step 4: Final conclusion}
 
 By the \textbf{Intermediate Value Theorem}, a continuous function that changes sign must cross zero at least once.
 
 In the first interval $[0, \pi/4]$, the function is continuous, changes sign, and is strictly increasing. This proves there is exactly one root here.
 
-In the second interval $[\pi/4, \pi/2)$, the function is continuous, changes sign, and strictly decreases through the zero line. This proves there is exactly one root here as well.
+In the second interval $[\pi/4, \pi/2)$, the function is continuous, changes sign, and strictly decreases. This proves there is exactly one root here as well.
 
 
 \subsubsection{Theory of the Bisection Method} \cite[page 25]{Sauer2014}
@@ -245,10 +245,16 @@ The Bisection Method is a simple and reliable way to find the root of an equatio
     \item \textbf{Repeat:} The new interval is exactly half the size of the old one. Repeat these steps to make the interval smaller and locate the root more accurately.
 \end{itemize}
 
-If $[a,b]$ is the starting interval, then after $n$ bisection steps, the interval $[a_n, b_n]$ has length $\frac{b - a}{2^n}$. Choosing the midpoint $x_c = \frac{a_n + b_n}{2}$ gives a best estimate of the solution $r$, which is within half the interval length of the true solution. Summarizing, after $n$ steps of the Bisection Method, we find that:
+Think of it like this: you start with a big search area, the interval $[a, b]$. Every time you take a step in the Bisection Method, you are literally chopping that area in half. 
+
+After doing that $n$ times, your search area has shriveled down to a tiny width of $\frac{b - a}{2^n}$. When you pick the midpoint $x_c = \frac{a_n + b_n}{2}$ as your final guess, you know the real answer $r$ is trapped somewhere in that tiny space. 
+
+If you have a close enough target - which we call the tolerance $\epsilon$ - you just need to keep bisecting until that tiny interval is smaller than or equal to your limit:
+
 \begin{equation}
-    \text{Solution error} = |x_c - r| < \frac{b - a}{2^{n+1}}
+    \text{Solution error} = \frac{b - a}{2^n} \leq \epsilon
 \end{equation}
+where $\epsilon$ is a given tolerance
 
 \subsubsection{Application of the Bisection Method}
 
@@ -257,19 +263,16 @@ In this section we will apply Bisection Method in order to solve non-linear equa
 \vspace{5pt}
 \noindent \textbf{Assess number of iterations}
 
-Based on the equation (14) we can infer the number of iterations needed for our problem. Here is inequality for given task with the precission of $10^{-15}$
+Based on the equation (14) we can infer the number of iterations needed for our problem. Here is inequality for given task with the precission of $10^{-15}$:
 
 \begin{equation*}
-    n + 1 > \log_{2}\!\left(\frac{\pi}{4} \cdot 10^{15}\right)
+    n > \log_{2}\!\left(\frac{\pi}{4} \cdot 10^{15}\right)
 \end{equation*}
 \begin{equation*}
-    n + 1 > 49.4809
-\end{equation*}
-\begin{equation*}
-    n + 1 > 48.4809
+    n > 49.4809
 \end{equation*}
 
-Minimum number of iterations: 49
+Minimum number of iterations: 50
 
 \vspace{5pt}
 \noindent \textbf{Order of convergence}
@@ -278,7 +281,7 @@ For the Bisection Method, the interval length is reduced by a factor of 2 at eve
 \begin{equation*}
     e_{n+1} \approx \frac{1}{2} e_n
 \end{equation*}
-This means that the Bisection Method has linear convergence. The error decreases at a constant rate and each iteration improves the accuracy by roughly one additional binary digit.
+This means that the Bisection Method has linear convergence. The error decreases at a constant rate and each iteration improves the accuracy by approximately one additional binary digit.
 
 \vspace{5pt}
 \noindent \textbf{Results obtained from the code}
@@ -361,66 +364,67 @@ As an initial guesses we will use $p_0 = 0$ and $p_1 = \pi/4$
 \vspace{5pt}
 \noindent \textbf{Calculation of the order of convergence}
 
-To measure how fast a numerical method finds the exact root, we calculate the order of convergence, $\alpha$. Here is the step-by-step derivation used to find the formula for $\alpha$.
+To measure how fast a numerical method finds the exact root, we calculate the order of convergence, $\alpha$. Here is the step-by-step derivation of the formula for $\alpha$.
 
 \vspace{5pt}
-\noindent \textbf{Step 1: Define the error relationship} \cite[page 35-37, 52-54]{Sauer2014}
+\noindent \textbf{Step 1: define the error ratio between each other} \cite[page 35-37, 52-54]{Sauer2014}
 
-The order of convergence links the error at the next step ($e_{n+1}$) to the error at the current step ($e_n$). This relationship uses an unknown constant number, $C$. The starting formula is:
+The order of convergence looks from the error at the next step ($e_{n+1}$) towards the error at the current step ($e_n$). This ratio is defined with the additional constant term $C$. The starting formula is:
 \begin{equation*}
     |e_{n+1}| \approx C |e_n|^\alpha
 \end{equation*}
 
 \vspace{5pt}
-\noindent \textbf{Step 2: Use logarithms to separate variables}
+\noindent \textbf{Step 2: use logarithmic properties for separating}
 
-We want to find $\alpha$, but we do not know the value of $C$. To fix this, we take the natural logarithm ($\ln$) of both sides of the equation. This gives our first main equation:
+We want to find $\alpha$, but the problem at the moment that we do not know $C$. To avoid this, we can take the logarithm ($\ln$) of both sides of the equation. This gives us next equation:
 \begin{equation*}
     \ln(|e_{n+1}|) \approx \ln(C) + \alpha \ln(|e_n|)
 \end{equation*}
 
 \vspace{5pt}
-\noindent \textbf{Step 3: Write the equation for the previous step}
+\noindent \textbf{Step 3: equation for the previous step}
 
-This mathematical rule also works for the step right before it. We write a second equation using the error from the previous step ($e_{n-1}$):
 \begin{equation*}
     \ln(|e_n|) \approx \ln(C) + \alpha \ln(|e_{n-1}|)
 \end{equation*}
 
 \vspace{5pt}
-\noindent \textbf{Step 4: Subtract to remove the constant}
+\noindent \textbf{Step 4: subtract to cancel out the constant}
 
-We subtract the second equation from the first equation. Because both equations share the term $\ln(C)$, this unknown constant is removed completely from the math:
+We subtract the second equation from the first equation. Because both equations have this term $\ln(C)$, this constant is canceled out from the equation:
 \begin{equation*}
     \ln(|e_{n+1}|) - \ln(|e_n|) \approx \alpha \big( \ln(|e_n|) - \ln(|e_{n-1}|) \big)
 \end{equation*}
 
 \vspace{5pt}
-\noindent \textbf{Step 5: Find the final formula} \\
-Finally, we use standard logarithm rules to group the terms. We isolate $\alpha$ by dividing both sides. This gives the exact formula to calculate the order of convergence using our lab data:
+\noindent \textbf{Step 5: find the final formula} \\
+Using standard logarithm rules to group the terms - we isolate $\alpha$ by dividing both sides. Final formula will look like this
 \begin{equation}
     \alpha \approx \frac{\ln(|e_{n+1}|/|e_n|)}{\ln(|e_n|/|e_{n-1}|)}
 \end{equation}
+
+With that we can look at $\alpha$ values on the latest steps observing the order of convergence.
 
 For Newton-Raphson method, for both $p_0$ and $p_1$ initial guesses the order of convergence is quadratic. We can also observe that based on the estimation on every step:
 
 For $p_0$:
 \begin{itemize}
-    \item step 3: Estimated Alpha = 1.4262
-    \item step 4: Estimated Alpha = 1.6712
-    \item step 5: Estimated Alpha = 1.9645
-    \item step 6: Estimated Alpha = 1.999
-    \item step 7: Estimated Alpha = 1.1319
+    \item step 3: $\alpha \approx$ 1.4262
+    \item step 4: $\alpha \approx$ 1.6712
+    \item step 5: $\alpha \approx$ 1.9645
+    \item step 6: $\alpha \approx$ 1.999
+    \item step 7: $\alpha \approx$ 1.1319
 \end{itemize}
 
 For $p_1$:
 \begin{itemize}
-    \item step 3 Estimated Alpha = 2.3559
-    \item step 4 Estimated Alpha = 1.4325
-    \item step 5 Estimated Alpha = 1.6651
-    \item step 6 Estimated Alpha = 1.9633
-    \item step 7 Estimated Alpha = 1.9989
-    \item step 8 Estimated Alpha = 1.1573
+    \item step 3: $\alpha \approx$ 2.3559
+    \item step 4: $\alpha \approx$ 1.4325
+    \item step 5: $\alpha \approx$ 1.6651
+    \item step 6: $\alpha \approx$ 1.9633
+    \item step 7: $\alpha \approx$ 1.9989
+    \item step 8: $\alpha \approx$ 1.1573
 \end{itemize}
 
 On the last step the value of Alpha significantly decreasing because
@@ -472,40 +476,36 @@ To calculate the order of convergence we used the same logic and formulas that w
 For Secant method, the order of convergence was "super" linear ($\alpha \approx 1.6125$). We can also observe that based on the estimation on every step:
 
 \begin{itemize}
-    \item step 3 Estimated Alpha = -0.23153
-    \item step 4 Estimated Alpha = 6.131
-    \item step 5 Estimated Alpha = 0.58335
-    \item step 6 Estimated Alpha = 2.3024
-    \item step 7 Estimated Alpha = 1.5636
-    \item step 8 Estimated Alpha = 1.6302
-    \item step 9 Estimated Alpha = 1.6125
-    \item step 10 Estimated Alpha = Inf
+    \item step 3: $\alpha \approx$ -0.23153
+    \item step 4: $\alpha \approx$ 6.131
+    \item step 5: $\alpha \approx$ 0.58335
+    \item step 6: $\alpha \approx$ 2.3024
+    \item step 7: $\alpha \approx$ 1.5636
+    \item step 8: $\alpha \approx$ 1.6302
+    \item step 9: $\alpha \approx$ 1.6125
+    \item step 10: $\alpha \approx$ Inf
 \end{itemize}
 
-On the last step the value of Alpha significantly decreasing because
-of the limited machine precision.
+On the last step the value of $\alpha$ significantly decreasing because of the limited machine precision.
 
 \subsection{Conclusions}
 
 \begin{itemize}
     \item \textbf{Results:} we successfully found the correct result.
     Obtained the same results with all of the methods. All of the methods solved the given non-linear algebraic equation
-    \item \textbf{Bisection Method:} this method demonstrated itself
+    \item \textbf{Bisection method:} this method demonstrated itself
     as a slow but safe method which will always give you a result if
     the root is in the interval. Has a linear order of convergence
-    \item \textbf{Newton-Raphson Method:} this method demonstrated
+    \item \textbf{Newton-Raphson method:} this method demonstrated
     itself as the fastest one with quadratic convergence. However, it
     requires a good initial guesses.
-    \item \textbf{Secant Method:} this method is something in the
+    \item \textbf{Secant method:} this method is something in the
     middle between Newton-Raphson and Bisection. However, it has
     significantly smaller number of iterations required than
     Bisection. Also it does not require derivative, which is a good
     trade-off.
-    \item \textbf{Machine Precision:} while calculating the order of
-    convergence we faced the machine precision problem on the last
-    steps. That caused false values for the estimated alpha on last steps.
-    \item \textbf{Errors:} difference between methods is
-    significantly small comparing to each other. Overall, all methods showed great results with given initial parameters and accuracy.
+    \item \textbf{Machine precision issues:} while calculating the order of convergence we faced the machine precision problem on the last steps. That caused false values for the estimated alpha on last steps.
+    \item \textbf{Errors:} difference between methods is significantly small comparing to each other. Overall, all methods showed great results with given initial parameters and accuracy.
 \end{itemize}
 
 \newpage
@@ -558,7 +558,7 @@ To calculate the second derivative of discrete data, we use finite difference fo
 \end{enumerate}
 
 \vspace{5pt}
-\noindent\textbf{Calculated Second Derivative Vector:} \\
+\noindent \textbf{Calculated Second Derivative Vector:} \\
 The calculations produced the following $11$ values (rounded for clarity):
 
 \begin{center}
@@ -572,7 +572,7 @@ $f''$ & 12 & 13.2 & 14.4 & 15.6 & 16.8 & 18 & 19.2 & 20.4 & 21.6 & 22.8 & 24 \\
 \end{center}
 
 \vspace{5pt}
-\noindent\textbf{Natural Logarithm of the Second Derivative Vector ($\ln(f'')$):} \\
+\noindent \textbf{Natural Logarithm of the Second Derivative Vector ($\ln(f'')$):} \\
 Next, we applied a natural logarithm to each element in the $f''$ vector, which produced the following values:
 
 \begin{center}
@@ -591,7 +591,7 @@ $\ln(f'')$ & 2.4849 & 2.5802 & 2.6672 & 2.7473 & 2.8214 & 2.8904 & 2.9549 & 3.01
 To calculate the definite integral from our discrete data points, we use numerical integration methods. 
 
 \vspace{5pt}
-\noindent\textbf{1. Trapezoidal Rule} \cite[page 255]{Sauer2014}
+\noindent \textbf{1. Trapezoidal Rule} \cite[page 255]{Sauer2014}
 
 This method approximates the area under the function by connecting the data points with straight lines. This creates a series of trapezoids. It is a first-degree approximation method.
 
@@ -610,7 +610,7 @@ This method approximates the area under the function by connecting the data poin
 \end{itemize}
 
 \vspace{5pt}
-\noindent\textbf{2. Simpson's Rule} \cite[page 257]{Sauer2014}
+\noindent \textbf{2. Simpson's Rule} \cite[page 257]{Sauer2014}
 
 Instead of straight lines, this method uses parabolas (quadratic curves) to connect sets of three adjacent points. This provides a much smoother fit to the data.
 
@@ -634,7 +634,7 @@ Instead of straight lines, this method uses parabolas (quadratic curves) to conn
 To check the accuracy of our numerical methods, we compared our calculated sums to the exact mathematical result.
 
 \vspace{5pt}
-\noindent\textbf{1. Exact Value and Calculated Errors} \\
+\noindent \textbf{1. Exact Value and Calculated Errors} \\
 The exact value of the integral is $2.871201010907891$. \\
 By calculating the difference between this exact value and our numerical sums, we found the absolute error for each method:
 \begin{itemize}
@@ -643,11 +643,11 @@ By calculating the difference between this exact value and our numerical sums, w
 \end{itemize}
 
 \vspace{5pt}
-\noindent\textbf{2. Comparison of Errors} \\
+\noindent \textbf{2. Comparison of Errors} \\
 When we compare the two errors, it is clear that Simpson's Rule is much more accurate. The error for the Trapezoidal Rule is around $4.16 \times 10^{-4}$, while the error for Simpson's Rule is much smaller, around $9.57 \times 10^{-7}$. This means that the error from Simpson's Rule is hundreds of times smaller than the error from the Trapezoidal Rule.
 
 \vspace{5pt}
-\noindent\textbf{3. Explanation} \\
+\noindent \textbf{3. Explanation} \\
 We can explain this large difference in accuracy by looking at how each method works mathematically.
 \begin{itemize}
     \item The \textbf{Trapezoidal Rule} connects points with straight lines. It has an order of convergence of $2$. Usually used when points are not evenly distributed or the number of subintervals is odd (number of points is even).
@@ -699,7 +699,7 @@ The Newton Interpolation Method is a way to construct a mathematical curve that 
 To build this polynomial, we use a mathematical tool called divided differences.
 
 \vspace{5pt}
-\noindent\textbf{1. Divided Differences} \cite[page 223]{MathewsFink2003} \\
+\noindent \textbf{1. Divided Differences} \cite[page 223]{MathewsFink2003} \\
 Divided differences are calculated step-by-step from our given data points $(x_k, y_k)$.
 The zeroth-order difference is simply the function value at that point:
 \begin{equation*}
@@ -717,11 +717,11 @@ For higher orders, we use a recursive rule. We subtract two lower-order differen
 \end{equation*}
 
 \vspace{5pt}
-\noindent\textbf{2. Divided-Difference Table} \cite[page 224]{MathewsFink2003} \\
+\noindent \textbf{2. Divided-Difference Table} \cite[page 224]{MathewsFink2003} \\
 In practice, these calculations are organized into a table. The first two columns contain the given $x$ and $f(x)$ values. Each new column to the right calculates the next level of divided differences using the values from the column before it. The most important numbers in this table are the ones located on the main diagonal.
 
 \vspace{5pt}
-\noindent\textbf{3. The Newton Polynomial Formula} \cite[page 220 - 221]{MathewsFink2003} \\
+\noindent \textbf{3. The Newton Polynomial Formula} \cite[page 220 - 221]{MathewsFink2003} \\
 Once the table is complete, we can write the final polynomial. The Newton form of the polynomial is written as:
 \begin{equation}
     P_N(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)(x - x_1) + \dots + a_N(x - x_0)(x - x_1)\dots(x - x_{N-1})
@@ -730,7 +730,7 @@ The coefficients ($a_0, a_1, \dots, a_N$) are the diagonal entries from our divi
 
 \vspace{5pt}
 \subsubsection{Application of Newton Interpolation Method}
-\noindent\textbf{1. Divided Differences Matrix $A$} \\
+\noindent \textbf{1. Divided Differences Matrix $A$} \\
 Based on input $t$ and $c$ values we can construct the Divided Differences table (represented as a lower triangular matrix):
 \begin{equation*}
     A = \begin{bmatrix} 
@@ -744,7 +744,7 @@ Based on input $t$ and $c$ values we can construct the Divided Differences table
 \end{equation*}
 
 \vspace{5pt}
-\noindent\textbf{Coefficient Vector $p$} \\
+\noindent \textbf{Coefficient Vector $p$} \\
 The coefficients of the Newton polynomial correspond to the diagonal elements of matrix $A$. The decimal values are preserved as calculated:
 \begin{equation*}
     p = \begin{bmatrix} 
@@ -753,14 +753,14 @@ The coefficients of the Newton polynomial correspond to the diagonal elements of
 \end{equation*}
 
 \vspace{5pt}
-\noindent\textbf{Interpolation Nodes $t$} \\
+\noindent \textbf{Interpolation Nodes $t$} \\
 Values of the independent variable:
 \begin{equation*}
     t = \begin{bmatrix} 4 & 8 & 12 & 16 & 20 & 24 \end{bmatrix}
 \end{equation*}
 
 \vspace{5pt}
-\noindent\textbf{2. Construction of the Newton Polynomial in Initial Form} \\
+\noindent \textbf{2. Construction of the Newton Polynomial in Initial Form} \\
 The formula of the Newton interpolation polynomial for the given nodes has the following form:
 \begin{equation*}
     P(t) = p_0 + p_1(t - t_0) + p_2(t - t_0)(t - t_1) + \dots + p_n(t - t_0)\dots(t - t_{n-1})
@@ -776,7 +776,7 @@ Substituting the values of the nodes $x_i$ and the decimal coefficients $p_i$, w
 \end{equation}
 
 \vspace{5pt}
-\noindent\textbf{3. Normalized Form of the Polynomial} \\
+\noindent \textbf{3. Normalized Form of the Polynomial} \\
 To reduce the polynomial to the canonical form $P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0$, the brackets are expanded and terms are grouped together.
 
 \noindent Result in decimal form:
@@ -796,11 +796,11 @@ To reduce the polynomial to the canonical form $P(x) = a_n x^n + a_{n-1} x^{n-1}
 \end{figure}
 
 \vspace{5pt}
-\noindent\textbf{1. Interpolation Results and Model Fit} \\
+\noindent \textbf{1. Interpolation Results and Model Fit} \\
 The generated graph illustrates a 5th-degree polynomial curve (in blue) fitted to the discrete measurements of bacteria concentration over time (indicated by red markers). Within the bounds of our experimental data (from hour $4$ to hour $24$), the polynomial successfully acts as an interpolant. The curve captures a physically realistic trend during this timeframe: an initial spike in contamination following the storm, followed by a gradual decay as the system begins to clear.
 
 \vspace{5pt}
-\noindent\textbf{2. Polynomial Extrapolation and Non-Physical Results} \\
+\noindent \textbf{2. Polynomial Extrapolation and Non-Physical Results} \\
 Extrapolation involves utilizing our mathematical model to predict values outside the domain of the measured data (specifically, before hour $4$ and after hour $24$). When evaluating the polynomial at $x = 0$ (the exact moment of the storm), the model yields a concentration of $-210$, marked by a red cross on the graph.
 
 \vspace{5pt}
@@ -816,7 +816,7 @@ Extrapolation involves utilizing our mathematical model to predict values outsid
 Curve fitting is a mathematical process used to construct a continuous function that best represents a set of discrete data points. Unlike interpolation (which forces the curve to pass exactly through every point), the least-squares method finds a "best fit" model by minimizing the overall error(in this case RMS) between the calculated curve and the actual data.
 
 \vspace{5pt}
-\noindent\textbf{1. Linear Curve Fitting (The Least-Squares Line)} \cite[page 255]{MathewsFink2003} \\
+\noindent \textbf{1. Linear Curve Fitting (The Least-Squares Line)} \cite[page 255]{MathewsFink2003} \\
 If we have a dataset of $N$ distinct points $(x_k, y_k)$, the simplest approach is to fit a straight line. The equation for this line is:
 \begin{equation*}
     y = Ax + B
@@ -829,7 +829,7 @@ To find the optimal coefficients $A$ (the slope) and $B$ (the y-intercept) that 
 Solving this system simultaneously provides the exact values for $A$ and $B$ to construct the best-fit line.
 
 \vspace{5pt}
-\noindent\textbf{2. Exponential Curve Fitting (Data Linearization)} \cite[page 263]{MathewsFink2003} \\
+\noindent \textbf{2. Exponential Curve Fitting (Data Linearization)} \cite[page 263]{MathewsFink2003} \\
 Often, physical processes (like bacterial decay or population growth) do not follow a straight line and are better modeled by an exponential curve:
 \begin{equation*}
     y = Ce^{Ax}
@@ -837,14 +837,14 @@ Often, physical processes (like bacterial decay or population growth) do not fol
 Because this equation is non-linear, we cannot apply the normal equations directly. Instead, we must use a technique called data linearization.
 
 \vspace{5pt}
-\noindent\textbf{Step 1: Logarithmic Transformation} \\
+\noindent \textbf{Step 1: Logarithmic Transformation} \\
 We take the natural logarithm of both sides of the equation to break down the exponential term:
 \begin{equation*}
     \ln(y) = Ax + \ln(C)
 \end{equation*}
 
 \vspace{5pt}
-\noindent\textbf{Step 2: Change of Variables} \\
+\noindent \textbf{Step 2: Change of Variables} \\
 We introduce new variables to rewrite the equation in a standard linear format. Let:
 \begin{align*}
     Y &= \ln(y) \\
@@ -857,11 +857,11 @@ This transforms our complex equation into a simple linear relation:
 \end{equation*}
 
 \vspace{5pt}
-\noindent\textbf{Step 3: Applying the Normal Equations} \\
+\noindent \textbf{Step 3: Applying the Normal Equations} \\
 We map our original data points $(x_k, y_k)$ to the new linearized plane, creating transformed points $(X_k, Y_k) = (x_k, \ln(y_k))$. We then feed these $X$ and $Y$ values into the standard normal equations (from Part 1) to solve for $A$ and $B$.
 
 \vspace{5pt}
-\noindent\textbf{Step 4: Reversing the Transformation} \\
+\noindent \textbf{Step 4: Reversing the Transformation} \\
 Once the linear system is solved, the parameter $A$ is ready to use. However, $B$ is still in its logarithmic form. To find the original coefficient $C$ for our exponential model, we compute the inverse logarithm:
 \begin{equation*}
     C = e^B
@@ -869,7 +869,7 @@ Once the linear system is solved, the parameter $A$ is ready to use. However, $B
 This process allows us to accurately fit complex, non-linear curves using standard, reliable linear algebra tools.
 
 \vspace{5pt}
-\noindent\textbf{3. RMS} \cite[page 253]{MathewsFink2003} \\
+\noindent \textbf{3. RMS} \cite[page 253]{MathewsFink2003} \\
 The Root-Mean-Square error is a very common and useful way to find the overall error. To calculate it, you square every residual, find the average of all those squared values, and finally take the square root of that average.
 
 The formula for the RMS error ($E$) for $N$ data points is:
@@ -882,11 +882,11 @@ In curve fitting, the RMS error is often preferred because squaring the errors s
 \subsubsection{Results and Comparison of Curve Fitting Models}
 
 \vspace{5pt}
-\noindent\textbf{1. Calculation of Coefficients} \\
+\noindent \textbf{1. Calculation of Coefficients} \\
 To create our models, we applied the least-squares theory using our MATLAB code. For the linear model, we directly passed the raw time and concentration arrays into our solver function to find the straight-line coefficients. For the exponential model, we first linearized the data by taking the natural logarithm of the concentration array ($\ln(c)$). We passed this modified data into the same solver. Finally, we transformed the resulting intercept parameter back into our final exponential constant by using the $\exp()$ function, exactly as described in the theory.
 
 \vspace{5pt}
-\noindent\textbf{2. Graphical and Numerical Results} \\
+\noindent \textbf{2. Graphical and Numerical Results} \\
 
 \begin{figure}[h]
     \centering
@@ -909,7 +909,7 @@ The program gave these results:
 \end{itemize}
 
 \vspace{5pt}
-\noindent\textbf{3. Comparison} \\
+\noindent \textbf{3. Comparison} \\
 When we compare the two methods, the exponential model is clearly superior to the linear model.
 
 \begin{itemize}
@@ -954,10 +954,10 @@ where $S(t)$ denotes the number of susceptible individuals, $I(t)$ denotes the n
 
 \subsection{Solution \& Results}
 
-\subsubsection{Task (a): Matlab solver \textit{ode45}}
+\subsubsection{Task (a): MATLAB \textit{ode45}}
 
 \vspace{5pt}
-\noindent \textbf{Initial Vector:}
+\noindent \textbf{Initial vector:}
 \begin{itemize}
     \item $S(0) = 997$;
     \item $I(0) = 3$;
@@ -968,7 +968,7 @@ where $S(t)$ denotes the number of susceptible individuals, $I(t)$ denotes the n
 
 \noindent \textbf{Parameters:} 
 \begin{itemize}
-    \item Total Population = 1000;
+    \item Total population = 1000;
     \item Infection rate $\beta$ = 0.4;
     \item Recovery rate $\alpha$ = 0.035;
     \item Mortality rate $\gamma$ = 0.005.
@@ -989,10 +989,10 @@ where $S(t)$ denotes the number of susceptible individuals, $I(t)$ denotes the n
 Most of the population is in the \textit{recovered} group. A very small number of people is in the \textit{deceased} group.
 
 \vspace{5pt}
-\subsubsection{Task (b): Matlab solver \textit{ode45} (higher mortality rate)}
+\subsubsection{Task (b): MATLAB \textit{ode45} (higher mortality rate)}
 
 \vspace{5pt}
-\noindent \textbf{Initial Vector:}
+\noindent \textbf{Initial vector:}
 \begin{itemize}
     \item $S(0) = 997$;
     \item $I(0) = 3$;
@@ -1003,7 +1003,7 @@ Most of the population is in the \textit{recovered} group. A very small number o
 
 \noindent \textbf{Parameters:} 
 \begin{itemize}
-    \item Total Population = 1000;
+    \item Total population = 1000;
     \item Infection rate $\beta$ = 0.4;
     \item Recovery rate $\alpha$ = 0.035;
     \item Mortality rate $\gamma$ = 0.05.
@@ -1023,10 +1023,10 @@ Most of the population is in the \textit{recovered} group. A very small number o
 Most of the population is in the \textit{deceased} group in such model. Almost a half of the population is in the \textit{recovered} group.
 
 \vspace{5pt}
-\subsubsection{Task (c): Heun's Method (Small Step Size)}
+\subsubsection{Task (c): Heun's method (small step size)}
 
 \vspace{5pt}
-\noindent \textbf{Initial Vector:}
+\noindent \textbf{Initial vector:}
 \begin{itemize}
     \item $S(0) = 997$;
     \item $I(0) = 3$;
@@ -1037,25 +1037,25 @@ Most of the population is in the \textit{deceased} group in such model. Almost a
 
 \noindent \textbf{Parameters:} 
 \begin{itemize}
-    \item Total Population = 1000;
+    \item Total population = 1000;
     \item Infection rate $\beta$ = 0.4;
     \item Recovery rate $\alpha$ = 0.035;
     \item Mortality rate $\gamma$ = 0.005;
     \item Step size $\tau$ = 2.
 \end{itemize}
 
-\subsubsection{Theory of Heun's Method} \cite[page 297]{Sauer2014}
+\subsubsection{Theory of Heun's method} \cite[page 297]{Sauer2014}
 
-Heun's Method is a numerical technique used to solve differential equations. It is a small change to Euler's Method that makes the results much more accurate. In some books, it is also known as the explicit Trapezoid Method or the improved Euler Method.
+Heun's Method is a numerical technique used to solve differential equations. It is a small change to Euler's Method that makes the results much more accurate.
 
 \vspace{5pt}
 \noindent \textbf{How it Works:}
 \begin{itemize}
     \item Euler's Method finds the next point by using only the slope at the beginning of the step.
     \item Heun's Method improves this by using the average of two different slopes.
-    \item First, the method uses Euler's formula to make a quick "prediction" of the value at the right side of the interval.
+    \item First, the method uses Euler's formula to make a first prediction of the value at the right side of the interval.
     \item Next, it calculates the new slope at this predicted point.
-    \item Finally, it averages the starting slope and the predicted ending slope to get a corrected, more accurate answer.
+    \item Finally, it takes the average of the starting slope and the predicted ending slope to get more accurate answer.
 \end{itemize}
 
 \vspace{5pt}
@@ -1077,10 +1077,10 @@ The calculation starts with an initial value, $w_0 = y_0$. To find the next appr
 \noindent \textbf{Analysis:} On the Figure 7 there is a graph which results after Heun's method calculations. Comparing it to the results in the Part (a) we can see that there is no actual difference. The lines on the graph from Part (a) are more smooth. However, overall the values are the same. We can say that our implemented Heun's method works as expected
 
 \vspace{5pt}
-\subsubsection{Task (d): Heun's Method (Big Step Size)}
+\subsubsection{Task (d): Heun's method (big step size)}
 
 \vspace{5pt}
-\noindent \textbf{Initial Vector:}
+\noindent \textbf{Initial vector:}
 \begin{itemize}
     \item $S(0) = 997$;
     \item $I(0) = 3$;
@@ -1091,13 +1091,14 @@ The calculation starts with an initial value, $w_0 = y_0$. To find the next appr
 
 \noindent \textbf{Parameters:} 
 \begin{itemize}
-    \item Total Population = 1000;
+    \item Total population = 1000;
     \item Infection rate $\beta$ = 0.4;
     \item Recovery rate $\alpha$ = 0.035;
     \item Mortality rate $\gamma$ = 0.005;
     \item Step size $\tau$ = 12.
 \end{itemize}
 
+\newpage
 \vspace{5pt}
 \noindent \textbf{Obtained results}
 \begin{figure}[h]
@@ -1110,15 +1111,15 @@ The calculation starts with an initial value, $w_0 = y_0$. To find the next appr
 \noindent \textbf{Analysis:} On the Figure 8 we can observe total divergency. The only parameter that was changed comparing to the previous section - $\tau$. It happens because
 
 \vspace{5pt}
-\noindent \textbf{Explanation of Unexpected Results:}
-We can explain this failure because the absence of stability. Numerical methods have bounded stability radius. This means that the calculation only remains accurate if the time step ($\tau$) is small enough. If the step is not suffieciently small errors will multiply and only grow extremely fast. Our chosen time step was just outside this safe boundary. This causes the impossible results and the calculation breaking down.
+\noindent \textbf{Explanation of unexpected results:}
+We can explain this failure because the absence of stability. Some Numerical methods have bounded stability radius. This means that the calculation only remains accurate if the time step ($\tau$) is small enough. If the step is not sufficiently small errors will multiply and grow extremely fast. Our chosen time step was outside this safe boundary. This causes the impossible results and the calculation breaking down.
 
 \subsection{Conclusions}
 
 \begin{itemize}
     \item \textbf{Impact of parameters:} changing the parameters like mortality rate can significantly impact the results.
-    \item \textbf{Heun's Method:} this method demonstrated itself
-    as a precise intrsument to solve system of differential equations. However, step size is his weakness. It requires additional attention.
+    \item \textbf{Heun's method:} this method demonstrated itself
+    as a precise instrument to solve system of differential equations. However, step size is his weakness. It requires additional attention.
     \item \textbf{Instability:} with methods like Heun's the choose of the time step plays crucial role in the final results. If you choose the step out of bounds - errors will increase extremely fast and the solution becomes non-sense.
 \end{itemize}
 
