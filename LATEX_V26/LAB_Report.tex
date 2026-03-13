@@ -796,19 +796,16 @@ To reduce our polynomial to the classic form $P(x) = a_n x^n + a_{n-1} x^{n-1} +
 
 \vspace{5pt}
 \noindent \textbf{1. Interpolation Results} \\
-The generated graph illustrates a 5th-degree polynomial curve (in blue) fitted to the discrete measurements of bacteria concentration over time. Within the bounds of our experimental data (from hour $4$ to hour $24$), the polynomial successfully acts as an interpolant. The curve captures a physically realistic trend during this timeframe: an initial spike in contamination following the storm, followed by a gradual decay as the system begins to clear.
+The generated graph illustrates a 5th-degree polynomial curve (in blue) fitted to the discrete measurements of bacteria concentration over time. The curve captures a physically realistic trend during this timeframe: an initial increase in infection following the storm. This is followed by a gradual weakening as the system begins to clear.
 
 \vspace{5pt}
 \noindent \textbf{2. Polynomial Extrapolation} \\
-Extrapolation involves utilizing our mathematical model to predict values outside the domain of the measured data (specifically, before hour $4$ and after hour $24$). When evaluating the polynomial at $x = 0$, the model yields a concentration of $-210$.
+Extrapolation involves using our mathematical model to predict values outside of the given data (specifically, before hour $4$ and after hour $24$). When evaluating the polynomial at $x = 0$, the model returns a concentration of $-210$.
 
 \vspace{5pt}
-\noindent This negative result occurs for two primary reasons:
-\begin{itemize}
-    \item \textbf{Mathematical Limitations:} High-degree polynomials (like our 5th-degree model) are unstable outside their interpolation interval. They tend to oscillate wildly once they pass the initial data points. The algorithm's objective was to minimize the error between the known data points, not to understand the broader context of the function.
-    
-    \item \textbf{Physical Impossibility:} In a real-world biological system, concentration cannot drop below zero. The mathematical model is purely algebraic and is unaware of physical boundary conditions unless they are specifically programmed into it.
-\end{itemize}
+\noindent This negative result occurs for primary reason:
+     
+\textbf{Polynomials Limitations:} High-degree polynomials (like our 5th-degree model) are unstable outside their interpolation interval. They tend to oscillate once they pass the initial data points. The algorithm's objective was to minimize the error between the known data points, not to understand the broader context of the function.
 
 \subsubsection{Theory of Least-Squares Fitting}
 
@@ -829,7 +826,7 @@ Solving this system simultaneously provides the exact values for $A$ and $B$ to 
 
 \vspace{5pt}
 \noindent \textbf{2. Exponential Curve Fitting (Data Linearization)} \cite[page 263]{MathewsFink2003} \\
-Often, physical processes (like bacterial decay or population growth) do not follow a straight line and are better modeled by an exponential curve:
+Often, physical processes do not follow a straight line and are better modeled by an exponential curve:
 \begin{equation*}
     y = Ce^{Ax}
 \end{equation*}
