@@ -591,7 +591,7 @@ $\ln(f'')$ & 2.4849 & 2.5802 & 2.6672 & 2.7473 & 2.8214 & 2.8904 & 2.9549 & 3.01
 To calculate the definite integral from our discrete data points, we use numerical integration methods. 
 
 \vspace{5pt}
-\noindent\textbf{1. Trapezoidal Rule} \cite[page 255]{MathewsFink2003}
+\noindent\textbf{1. Trapezoidal Rule} \cite[page 255]{Sauer2014}
 
 This method approximates the area under the function by connecting the data points with straight lines. This creates a series of trapezoids. It is a first-degree approximation method.
 
@@ -610,7 +610,7 @@ This method approximates the area under the function by connecting the data poin
 \end{itemize}
 
 \vspace{5pt}
-\noindent\textbf{2. Simpson's Rule} \cite[page 257]{MathewsFink2003}
+\noindent\textbf{2. Simpson's Rule} \cite[page 257]{Sauer2014}
 
 Instead of straight lines, this method uses parabolas (quadratic curves) to connect sets of three adjacent points. This provides a much smoother fit to the data.
 
@@ -761,9 +761,9 @@ Values of the independent variable:
 
 \vspace{5pt}
 \noindent\textbf{2. Construction of the Newton Polynomial in Initial Form} \\
-The classical formula of the Newton interpolation polynomial for the given nodes has the following form:
+The formula of the Newton interpolation polynomial for the given nodes has the following form:
 \begin{equation*}
-    P(x) = p_0 + p_1(x - x_0) + p_2(x - x_0)(x - x_1) + \dots + p_n(x - x_0)\dots(x - x_{n-1})
+    P(t) = p_0 + p_1(t - t_0) + p_2(t - t_0)(t - t_1) + \dots + p_n(t - t_0)\dots(t - t_{n-1})
 \end{equation*}
 Substituting the values of the nodes $x_i$ and the decimal coefficients $p_i$, we obtain the polynomial:
 \begin{equation}
@@ -813,10 +813,10 @@ Extrapolation involves utilizing our mathematical model to predict values outsid
 
 \subsubsection{Theory of Least-Squares Fitting}
 
-Curve fitting is a mathematical process used to construct a continuous function that best represents a set of discrete data points. Unlike interpolation (which forces the curve to pass exactly through every point), the least-squares method finds a "best fit" model by minimizing the overall error between the calculated curve and the actual data.
+Curve fitting is a mathematical process used to construct a continuous function that best represents a set of discrete data points. Unlike interpolation (which forces the curve to pass exactly through every point), the least-squares method finds a "best fit" model by minimizing the overall error(in this case RMS) between the calculated curve and the actual data.
 
 \vspace{5pt}
-\noindent\textbf{1. Linear Curve Fitting (The Least-Squares Line)} \cite[page 253]{MathewsFink2003} \\
+\noindent\textbf{1. Linear Curve Fitting (The Least-Squares Line)} \cite[page 255]{MathewsFink2003} \\
 If we have a dataset of $N$ distinct points $(x_k, y_k)$, the simplest approach is to fit a straight line. The equation for this line is:
 \begin{equation*}
     y = Ax + B
@@ -868,6 +868,17 @@ Once the linear system is solved, the parameter $A$ is ready to use. However, $B
 \end{equation*}
 This process allows us to accurately fit complex, non-linear curves using standard, reliable linear algebra tools.
 
+\vspace{5pt}
+\noindent\textbf{3. RMS} \cite[page 253]{MathewsFink2003} \\
+The Root-Mean-Square error is a very common and useful way to find the overall error. To calculate it, you square every residual, find the average of all those squared values, and finally take the square root of that average.
+
+The formula for the RMS error ($E$) for $N$ data points is:
+\begin{equation}
+    E(f) = \left( \frac{1}{N} \sum_{k=1}^{N} |f(x_k) - y_k|^2 \right)^{1/2}
+\end{equation}
+
+In curve fitting, the RMS error is often preferred because squaring the errors strongly penalizes points that are very far away from the curve.
+
 \subsubsection{Results and Comparison of Curve Fitting Models}
 
 \vspace{5pt}
@@ -898,7 +909,7 @@ The program gave these results:
 \end{itemize}
 
 \vspace{5pt}
-\noindent\textbf{3. Comparison and Conclusion} \\
+\noindent\textbf{3. Comparison} \\
 When we compare the two methods, the exponential model is clearly superior to the linear model.
 
 \begin{itemize}
@@ -907,10 +918,8 @@ When we compare the two methods, the exponential model is clearly superior to th
     \item \textbf{Physical Reality:} In biology, natural decay processes usually follow an exponential curve. When there is a lot of bacteria, the concentration drops quickly. As the water gets cleaner, the rate of decay slows down. The linear model is flawed because it assumes the bacteria disappear at the exact same constant speed forever.
 \end{itemize}
 
-Because the exponential model is both mathematically more accurate and physically more realistic, its extrapolation of $1985.44$ is a much more reliable estimate for the starting concentration at $t=0$.
 
 \subsection{Conclusions}
-
 
 Based on the analysis of the different mathematical models in this section, we can draw the following conclusions regarding the initial bacteria concentration:
 
