@@ -558,7 +558,7 @@ To calculate the second derivative of discrete data, we use finite difference fo
 \end{enumerate}
 
 \vspace{5pt}
-\noindent \textbf{Calculated Second Derivative Vector:} \\
+\noindent \textbf{Calculated second derivative vector:} \\
 The calculations produced the following $11$ values (rounded for clarity):
 
 \begin{center}
@@ -572,7 +572,7 @@ $f''$ & 12 & 13.2 & 14.4 & 15.6 & 16.8 & 18 & 19.2 & 20.4 & 21.6 & 22.8 & 24 \\
 \end{center}
 
 \vspace{5pt}
-\noindent \textbf{Natural Logarithm of the Second Derivative Vector ($\ln(f'')$):} \\
+\noindent \textbf{Natural logarithm of the second derivative vector ($\ln(f'')$):} \\
 Next, we applied a natural logarithm to each element in the $f''$ vector, which produced the following values:
 
 \begin{center}
@@ -593,7 +593,7 @@ To calculate the definite integral from our discrete data points, we use numeric
 \vspace{5pt}
 \noindent \textbf{1. Trapezoidal Rule} \cite[page 255]{Sauer2014}
 
-This method approximates the area under the function by connecting the data points with straight lines. This creates a series of trapezoids. It is a first-degree approximation method.
+This method approximates the area under the function by connecting the data points with straight lines. This creates a series of trapezoids.
 
 \begin{itemize}   
     \item \textbf{Formula:} To find the total area, we sum the areas of all the small trapezoids. The formula multiplies the endpoints by $1$ and all the middle points by $2$:
@@ -601,7 +601,7 @@ This method approximates the area under the function by connecting the data poin
         T(f, h) = \frac{h}{2}(f_0 + 2f_1 + 2f_2 + \dots + 2f_{M-1} + f_M)
     \end{equation}
     
-    \item \textbf{Order of Convergence:} The Trapezoidal Rule has a theoretical order of convergence of $2$, meaning the global error is proportional to $h^2$.
+    \item \textbf{Order of convergence:} The Trapezoidal Rule has a theoretical order of convergence of $2$, meaning the global error is proportional to $h^2$.
     
     \item \textbf{Result:} Applying this rule to our previously calculated data vector ($\ln(f'')$), the code produced the following integral value:
     \begin{equation*}
@@ -620,7 +620,7 @@ Instead of straight lines, this method uses parabolas (quadratic curves) to conn
         S(f, h) = \frac{h}{3}(f_0 + 4f_1 + 2f_2 + 4f_3 + \dots + 2f_{2M-2} + 4f_{2M-1} + f_{2M})
     \end{equation}
     
-    \item \textbf{Order of Convergence:} Simpson's Rule has a theoretical order of convergence of $4$, meaning the global error is proportional to $h^4$.
+    \item \textbf{Order of convergence:} Simpson's Rule has a theoretical order of convergence of $4$, meaning the global error is proportional to $h^4$.
     
     \item \textbf{Result:} Applying Simpson's Rule to our data vector ($\ln(f'')$), the code produced the following integral value:
     \begin{equation*}
@@ -631,7 +631,7 @@ Instead of straight lines, this method uses parabolas (quadratic curves) to conn
 \vspace{10pt}
 \subsubsection{Error Analysis and Comparison}
 
-To check the accuracy of our numerical methods, we compared our calculated sums to the exact mathematical result.
+To check the accuracy of our numerical methods, we compared our calculated sums to the exact given mathematical result.
 
 \vspace{5pt}
 \noindent \textbf{1. Exact Value and Calculated Errors} \\
@@ -650,7 +650,7 @@ When we compare the two errors, it is clear that Simpson's Rule is much more acc
 \noindent \textbf{3. Explanation} \\
 We can explain this large difference in accuracy by looking at how each method works mathematically.
 \begin{itemize}
-    \item The \textbf{Trapezoidal Rule} connects points with straight lines. It has an order of convergence of $2$. Usually used when points are not evenly distributed or the number of subintervals is odd (number of points is even).
+    \item \textbf{Trapezoidal Rule} connects points with straight lines. It has an order of convergence of $2$. Usually used when points are not evenly distributed or the number of subintervals is odd (number of points is even).
     \item \textbf{Simpson's Rule} connects points using curved parabolas. It has a higher order of convergence of $4$. Requires an odd number of points. Usually used for evenly distributed points. 
 \end{itemize}
 
@@ -661,11 +661,11 @@ Since the best conditions for Simpson's are met (odd number of evenly distribute
 Based on the calculations and error analysis performed in this section, we can draw the following conclusions:
 
 \begin{itemize}
-    \item \textbf{Comparison of Integration Methods:} Both the Trapezoidal Rule and Simpson's Rule provided good approximations of the true integral area. However, their levels of accuracy were very different.
+    \item \textbf{Comparison of integration methods:} Both the Trapezoidal Rule and Simpson's Rule provided good approximations of the true integral area. However, their levels of accuracy were very different.
     
-    \item \textbf{Superiority of Simpson's Rule:} The error analysis proved that Simpson's Rule ($9.57 \times 10^{-7}$) was significantly more accurate than the Trapezoidal Rule ($4.16 \times 10^{-4}$).
+    \item \textbf{Advantage of Simpson's Rule:} The error analysis proved that Simpson's Rule ($9.57 \times 10^{-7}$) was significantly more accurate than the Trapezoidal Rule ($4.16 \times 10^{-4}$).
     
-    \item \textbf{Reasoning for Accuracy:} This difference in accuracy is expected based on the mathematical theory. Because our dataset had an odd number of evenly spaced points ($11$ points, $10$ subintervals), it was the perfect setup for Simpson's Rule. Since Simpson's Rule uses curved parabolas (O($h^4$) error) rather than the straight lines of the Trapezoidal Rule (O($h^2$) error), it fits the data much better and produces a much smaller error.
+    \item \textbf{Reasons for different accuracy:} This difference in accuracy is expected based on the mathematical theory. Because our dataset had an odd number of evenly spaced points ($11$ points, $10$ subintervals), it was the perfect setup for Simpson's Rule. Since Simpson's Rule uses curved parabolas (O($h^4$) error) rather than the straight lines of the Trapezoidal Rule (O($h^2$) error), it fits the data much better and produces a much smaller error.
 \end{itemize}
 
 \newpage
@@ -694,14 +694,14 @@ Consider the problem of estimating the concentration of \textit{E. coli} bacteri
 
 \subsubsection{Theory of Newton Polynomial Interpolation}
 
-The Newton Interpolation Method is a way to construct a mathematical curve that passes exactly through a specific set of data points. If we have $N + 1$ distinct data points, this method creates a unique polynomial of degree $N$ or less.
+Newton Interpolation Method is a way to construct a mathematical curve that passes exactly through a specific set of data points. If we have $N + 1$ distinct data points, this method creates a unique polynomial of degree $N$ or less.
 
 To build this polynomial, we use a mathematical tool called divided differences.
 
 \vspace{5pt}
 \noindent \textbf{1. Divided Differences} \cite[page 223]{MathewsFink2003} \\
 Divided differences are calculated step-by-step from our given data points $(x_k, y_k)$.
-The zeroth-order difference is simply the function value at that point:
+Zeroth-order difference is simply the function value at that point:
 \begin{equation*}
     f[x_k] = f(x_k)
 \end{equation*}
@@ -731,7 +731,7 @@ The coefficients ($a_0, a_1, \dots, a_N$) are the diagonal entries from our divi
 \vspace{5pt}
 \subsubsection{Application of Newton Interpolation Method}
 \noindent \textbf{1. Divided Differences Matrix $A$} \\
-Based on input $t$ and $c$ values we can construct the Divided Differences table (represented as a lower triangular matrix):
+Based on input $t$ and $c$ values we can construct the Divided Differences table (lower triangular matrix):
 \begin{equation*}
     A = \begin{bmatrix} 
         1600 & 0 & 0 & 0 & 0 & 0 \\ 
@@ -745,7 +745,7 @@ Based on input $t$ and $c$ values we can construct the Divided Differences table
 
 \vspace{5pt}
 \noindent \textbf{Coefficient Vector $p$} \\
-The coefficients of the Newton polynomial correspond to the diagonal elements of matrix $A$. The decimal values are preserved as calculated:
+The coefficients of Newton polynomial correspond to the diagonal elements of matrix $A$. The decimal values:
 \begin{equation*}
     p = \begin{bmatrix} 
         1600 \\ -70 \\ -1.25 \\ 0.6510416667 \\ -0.0960286458 \\ 0.0098470052 
@@ -753,19 +753,18 @@ The coefficients of the Newton polynomial correspond to the diagonal elements of
 \end{equation*}
 
 \vspace{5pt}
-\noindent \textbf{Interpolation Nodes $t$} \\
-Values of the independent variable:
+\noindent \textbf{Interpolation Nodes} \\
 \begin{equation*}
     t = \begin{bmatrix} 4 & 8 & 12 & 16 & 20 & 24 \end{bmatrix}
 \end{equation*}
 
 \vspace{5pt}
-\noindent \textbf{2. Construction of the Newton Polynomial in Initial Form} \\
+\noindent \textbf{2. Construction of the Newton Polynomial} \\
 The formula of the Newton interpolation polynomial for the given nodes has the following form:
 \begin{equation*}
     P(t) = p_0 + p_1(t - t_0) + p_2(t - t_0)(t - t_1) + \dots + p_n(t - t_0)\dots(t - t_{n-1})
 \end{equation*}
-Substituting the values of the nodes $x_i$ and the decimal coefficients $p_i$, we obtain the polynomial:
+Tuning in values of the nodes $t_i$ and the decimal coefficients $p_i$, we obtain following polynomial:
 \begin{equation}
     \begin{aligned}
         P(x) ={}& 1600 - 70(x - 4) - 1.25(x - 4)(x - 8) \\
@@ -777,7 +776,7 @@ Substituting the values of the nodes $x_i$ and the decimal coefficients $p_i$, w
 
 \vspace{5pt}
 \noindent \textbf{3. Normalized Form of the Polynomial} \\
-To reduce the polynomial to the canonical form $P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0$, the brackets are expanded and terms are grouped together.
+To reduce our polynomial to the classic form $P(x) = a_n x^n + a_{n-1} x^{n-1} + \dots + a_0$, the brackets are expanded and terms are grouped together.
 
 \noindent Result in decimal form:
 \begin{equation}
@@ -796,24 +795,24 @@ To reduce the polynomial to the canonical form $P(x) = a_n x^n + a_{n-1} x^{n-1}
 \end{figure}
 
 \vspace{5pt}
-\noindent \textbf{1. Interpolation Results and Model Fit} \\
-The generated graph illustrates a 5th-degree polynomial curve (in blue) fitted to the discrete measurements of bacteria concentration over time (indicated by red markers). Within the bounds of our experimental data (from hour $4$ to hour $24$), the polynomial successfully acts as an interpolant. The curve captures a physically realistic trend during this timeframe: an initial spike in contamination following the storm, followed by a gradual decay as the system begins to clear.
+\noindent \textbf{1. Interpolation Results} \\
+The generated graph illustrates a 5th-degree polynomial curve (in blue) fitted to the discrete measurements of bacteria concentration over time. Within the bounds of our experimental data (from hour $4$ to hour $24$), the polynomial successfully acts as an interpolant. The curve captures a physically realistic trend during this timeframe: an initial spike in contamination following the storm, followed by a gradual decay as the system begins to clear.
 
 \vspace{5pt}
-\noindent \textbf{2. Polynomial Extrapolation and Non-Physical Results} \\
-Extrapolation involves utilizing our mathematical model to predict values outside the domain of the measured data (specifically, before hour $4$ and after hour $24$). When evaluating the polynomial at $x = 0$ (the exact moment of the storm), the model yields a concentration of $-210$, marked by a red cross on the graph.
+\noindent \textbf{2. Polynomial Extrapolation} \\
+Extrapolation involves utilizing our mathematical model to predict values outside the domain of the measured data (specifically, before hour $4$ and after hour $24$). When evaluating the polynomial at $x = 0$, the model yields a concentration of $-210$.
 
 \vspace{5pt}
 \noindent This negative result occurs for two primary reasons:
 \begin{itemize}
-    \item \textbf{Mathematical Limitations:} High-degree polynomials (like our 5th-degree model) are notoriously unstable outside their interpolation interval. They tend to oscillate wildly once they pass the outermost data points. The algorithm's sole objective was to minimize the error between the known data points, not to understand the broader context of the function.
+    \item \textbf{Mathematical Limitations:} High-degree polynomials (like our 5th-degree model) are unstable outside their interpolation interval. They tend to oscillate wildly once they pass the initial data points. The algorithm's objective was to minimize the error between the known data points, not to understand the broader context of the function.
     
-    \item \textbf{Physical Impossibility:} In a real-world biological system, concentration cannot drop below zero. The mathematical model is purely algebraic and is entirely unaware of physical boundary conditions unless they are explicitly programmed into it.
+    \item \textbf{Physical Impossibility:} In a real-world biological system, concentration cannot drop below zero. The mathematical model is purely algebraic and is unaware of physical boundary conditions unless they are specifically programmed into it.
 \end{itemize}
 
 \subsubsection{Theory of Least-Squares Fitting}
 
-Curve fitting is a mathematical process used to construct a continuous function that best represents a set of discrete data points. Unlike interpolation (which forces the curve to pass exactly through every point), the least-squares method finds a "best fit" model by minimizing the overall error(in this case RMS) between the calculated curve and the actual data.
+Curve fitting is a mathematical process used to construct a continuous function that best represents a set of discrete data points. Unlike interpolation (which forces the curve to pass exactly through every point), the least-squares method finds a "best fit" model by minimizing the overall error (in this case RMS) between the calculated curve and the actual data.
 
 \vspace{5pt}
 \noindent \textbf{1. Linear Curve Fitting (The Least-Squares Line)} \cite[page 255]{MathewsFink2003} \\
@@ -883,7 +882,7 @@ In curve fitting, the RMS error is often preferred because squaring the errors s
 
 \vspace{5pt}
 \noindent \textbf{1. Calculation of Coefficients} \\
-To create our models, we applied the least-squares theory using our MATLAB code. For the linear model, we directly passed the raw time and concentration arrays into our solver function to find the straight-line coefficients. For the exponential model, we first linearized the data by taking the natural logarithm of the concentration array ($\ln(c)$). We passed this modified data into the same solver. Finally, we transformed the resulting intercept parameter back into our final exponential constant by using the $\exp()$ function, exactly as described in the theory.
+To create our models, we applied the least-squares theory using our MATLAB code. For the linear model, we directly passed the time and concentration arrays into our solver function to find the straight-line coefficients. For the exponential model, we first linearized the data by taking the natural logarithm of the concentration array ($\ln(c)$). We passed this modified data into the same solver. Then, we transformed the resulting parameter back into our final exponential constant by using the $\exp()$ function, exactly as described in the theory.
 
 \vspace{5pt}
 \noindent \textbf{2. Graphical and Numerical Results} \\
@@ -893,12 +892,6 @@ To create our models, we applied the least-squares theory using our MATLAB code.
     \includegraphics[width=1 \textwidth]{img/3_d_plot}
     \caption{Resulting least squares line, the least squares exponential curve and the given data points}
 \end{figure}
-
-The graph displays our original measurements as red circles. We plotted our two calculated models over this data:
-\begin{itemize}
-    \item \textbf{Blue Line:} The linear fit model.
-    \item \textbf{Green Curve:} The exponential fit model.
-\end{itemize}
 
 We used both models to extrapolate backward to $t=0$. This gives us an estimate of the bacteria concentration at the exact moment the storm happened. We also calculated the Root Mean Square (RMS) error. This number tells us how far off our calculated line is from the real data points (a lower number is better).
 
@@ -910,12 +903,12 @@ The program gave these results:
 
 \vspace{5pt}
 \noindent \textbf{3. Comparison} \\
-When we compare the two methods, the exponential model is clearly superior to the linear model.
+When we compare two methods, exponential model is clearly superior to linear.
 
 \begin{itemize}
     \item \textbf{Error Analysis:} The RMS error for the exponential curve ($31.39$) is more than two times smaller than the error for the straight line ($64.64$). This proves the green curve fits our dataset much better mathematically.
-    \item \textbf{Visual Proof:} Looking at the graph, the blue straight line completely misses the middle points and the final point. The green curve naturally bends and passes very close to almost all the red circles.
-    \item \textbf{Physical Reality:} In biology, natural decay processes usually follow an exponential curve. When there is a lot of bacteria, the concentration drops quickly. As the water gets cleaner, the rate of decay slows down. The linear model is flawed because it assumes the bacteria disappear at the exact same constant speed forever.
+    \item \textbf{Visual:} Looking at the graph, the blue straight line completely misses the middle points and the final point. The green curve naturally bends and passes very close to almost all the red circles.
+    \item \textbf{Reality:} In biology, natural decay processes usually follow an exponential curve. When there is a lot of bacteria, the concentration drops quickly. As the water gets cleaner, the rate of decay slows down. The linear model is flawed because it assumes the bacteria disappear at the exact same constant speed forever.
 \end{itemize}
 
 
@@ -924,15 +917,14 @@ When we compare the two methods, the exponential model is clearly superior to th
 Based on the analysis of the different mathematical models in this section, we can draw the following conclusions regarding the initial bacteria concentration:
 
 \begin{itemize}
-    \item \textbf{Failure of Polynomial Extrapolation:} While the 5th-degree Newton polynomial perfectly connected our known data points, it completely failed at predicting the past. It produced an impossible negative concentration ($-210$) for time zero. This proves that high-degree polynomials are highly unstable and should not be used for extrapolation outside the given data range.
+    \item \textbf{Failure of Polynomial extrapolation:} While the 5th-degree Newton polynomial perfectly connected our known data points, it completely failed at predicting the past. It produced an impossible negative concentration ($-210$) for time zero. This proves that high-degree polynomials are highly unstable and should not be used for extrapolation outside the given data range.
 
-    \item \textbf{Inaccuracy of the Linear Model:} The linear least-squares model assumed the bacteria died at a constant speed. This resulted in a poor fit with a high error ($\text{RMS} = 64.64$) because a straight line does not reflect how real biological decay works.
+    \item \textbf{Inaccuracy of the Linear model:} The linear least-squares model assumed the bacteria died at a constant speed. This resulted in a poor fit with a high error ($\text{RMS} = 64.64$) because a straight line does not reflect how real biological decay works.
 
-    \item \textbf{Superiority of the Exponential Model:} The exponential model performed much better. It had an error that was more than two times smaller ($\text{RMS} = 31.39$) and correctly matched the natural biological process, where the rate of bacterial decay naturally slows down as the water gets cleaner.
+    \item \textbf{Superiority of the Exponential model:} The exponential model performed much better. It had an error that was more than two times smaller ($\text{RMS} = 31.39$) and correctly matched the natural biological process, where the rate of bacterial decay naturally slows down as the water gets cleaner.
 
     \item \textbf{Final Estimation:} Because the exponential curve is the most mathematically accurate and physically realistic model for this dataset, we conclude that our best estimate for the initial \textit{E. coli} concentration right after the storm is $1985.44$ CFU/100 mL.
 \end{itemize}
-
 
 \newpage
 
