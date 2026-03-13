@@ -11,9 +11,11 @@ function p = newton_matrix(x, y)
             A(i, j) = (A(i, j-1) - A(i-1, j-1)) / (x(i) - x(i-j+1));            
         end
     end
+    display(A);
 
     p = zeros(n, 1);
     for i = 1:n
         p(i) = A(i, i);
     end
+    display(p);
 end

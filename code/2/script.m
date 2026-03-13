@@ -8,7 +8,8 @@ b = x(end);
 N = length(x) - 1;
 h = (b - a) / N;
 
-lnf2 = log(cdf2(y, h));
+f2 = cdf2(y, h)
+lnf2 = log(f2)
 
 trapezoidalsum = trapezoidalsum(lnf2, N, h)
 simpsonsum = simpsonsum(lnf2, N, h)
