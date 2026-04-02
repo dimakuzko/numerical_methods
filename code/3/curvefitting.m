@@ -8,6 +8,7 @@ linpoints = linspace(0, 24, 1000);
 
 %linear
 coeffs_l = solve_normal(t, c, 1);
+display(coeffs_l);
 
 predicted_l = polyval(coeffs_l, t);
 predicted_l_value = polyval(coeffs_l, t0);
@@ -15,8 +16,13 @@ predicted_l_plot = polyval(coeffs_l, linpoints);
 
 %exponential
 coeffs_e = solve_normal(t, log(c), 1);
-b_exp = coeffs_e(1); 
+display(coeffs_e);
+
 a_exp = exp(coeffs_e(2));
+display(a_exp);
+
+b_exp = coeffs_e(1);
+display(b_exp);
 
 predicted_e = a_exp * exp(b_exp * t);
 predicted_e_value = a_exp * exp(b_exp * t0);

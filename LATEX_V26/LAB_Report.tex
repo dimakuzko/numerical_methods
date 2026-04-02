@@ -220,9 +220,9 @@ In the first interval $[0, \pi/4]$, the function is continuous, changes sign, an
 In the second interval $[\pi/4, \pi/2)$, the function is continuous, changes sign, and strictly decreases. This proves there is exactly one root here as well.
 
 
-\subsubsection{Theory of the Bisection Method} \cite[page 25]{Sauer2014}
+\subsubsection{Theory of the Bisection Method} 
 
-The Bisection Method is a simple and reliable way to find the root of an equation. It works by dividing an interval in half over and over again. You do not need a full plot of the function to use it.
+The Bisection Method \cite[page 25]{Sauer2014} is a simple and reliable way to find the root of an equation. It works by dividing an interval in half over and over again. You do not need a full plot of the function to use it.
 
 \newpage
 \textbf{Step-by-Step Process:}
@@ -290,9 +290,9 @@ This means that the Bisection Method has linear convergence. The error decreases
     \item Number of iterations: $n = 50$
 \end{itemize}
 
-\subsubsection{Theory of the Newton-Raphson Method} \cite[page 53]{Sauer2014}
+\subsubsection{Theory of the Newton-Raphson Method} 
 
-Newton’s Method, also called the Newton–Raphson Method, usually converges much faster
+Newton’s Method, also called the Newton–Raphson Method \cite[page 53]{Sauer2014}, usually converges much faster
 than the linearly convergent methods we have seen previously. The geometric picture
 of Newton’s Method is shown in Figure 1.8. To find a root of $f(x) = 0$, a starting
 guess $x_0$ is given, and the tangent line to the function $f$ at $x_0$ is drawn. The
@@ -432,9 +432,9 @@ of the limited machine precision. The errors are sufficiently small
 that machine evaluating their ratio as almost the same.
 
 
-\subsubsection{Theory of the Secant Method} \cite[page 61]{Sauer2014}
+\subsubsection{Theory of the Secant Method} 
 
-The Secant Method is a popular technique to find the root of an equation. It is very similar to Newton's Method, but it is easier to use because it does not require calculating the exact derivative of the function.
+The Secant Method \cite[page 61]{Sauer2014} is a popular technique to find the root of an equation. It is very similar to Newton's Method, but it is easier to use because it does not require calculating the exact derivative of the function.
 
 \vspace{5pt}
 \noindent \textbf{How it Works:}
@@ -541,7 +541,7 @@ To calculate the second derivative of discrete data, we use finite difference fo
     \item \textbf{Central Difference Formula} \cite[page 329]{MathewsFink2003} \\
     For all points in the middle of our dataset, we use the central difference formula. This is the most standard method because it uses points on both the left and right sides of the target point.
     \begin{equation*}
-        f''(x_i) \approx \frac{f_{x_{i-1}} - 2f_{x_{i}} + f_{x_{i+1}}}{h^2}
+        f''(x_i) \approx \frac{f_{i-1} - 2f_{i} + f_{i+1}}{h^2}
     \end{equation*}
 
     \item \textbf{Forward Difference Formula} \cite[page 333]{MathewsFink2003} \\
@@ -879,7 +879,31 @@ In curve fitting, the RMS error is often preferred because squaring the errors s
 
 \vspace{5pt}
 \noindent \textbf{1. Calculation of Coefficients} \\
-To create our models, we applied the least-squares theory using our MATLAB code. For the linear model, we directly passed the time and concentration arrays into our solver function to find the straight-line coefficients. For the exponential model, we first linearized the data by taking the natural logarithm of the concentration array ($\ln(c)$). We passed this modified data into the same solver. Then, we transformed the resulting parameter back into our final exponential constant by using the $\exp()$ function, exactly as described in the theory.
+To create our models, we applied the least-squares theory using our MATLAB code. 
+
+For the linear model, passing the time ($t$) and concentration ($c$) arrays into our solver function yielded the following coefficients for the equation $c(t) = At + B$:
+\begin{align*}
+    A &= -52.2857 \\
+    B &= 1735.3333
+\end{align*}
+Thus, the resulting linear model is:
+\begin{equation*}
+    c(t) = -52.2857t + 1735.3333
+\end{equation*}
+
+For the exponential model $c(t) = Ce^{At}$, we first linearized the data by taking the natural logarithm of the concentration array. Solving the normal equations for the transformed data $(t, \ln(c))$ gave the intermediate linear coefficients for the relation $\ln(c) = At + B$:
+\begin{align*}
+    A &= -0.0535 \\
+    B &= 7.5936
+\end{align*}
+To find the final exponential constant $C$, we transformed the intermediate intercept $B$ back using the exponential function, exactly as described in the theory:
+\begin{equation*}
+    C = e^B = e^{7.5936} = 1985.4366
+\end{equation*}
+With both parameters calculated, our final exponential model is:
+\begin{equation*}
+    c(t) = 1985.4366 e^{-0.0535t}
+\end{equation*}
 
 \vspace{5pt}
 \noindent \textbf{2. Graphical and Numerical Results} \\
@@ -1414,6 +1438,7 @@ linpoints = linspace(0, 24, 1000);
 
 %linear
 coeffs_l = solve_normal(t, c, 1);
+display(coeffs_l);
 
 predicted_l = polyval(coeffs_l, t);
 predicted_l_value = polyval(coeffs_l, t0);
@@ -1421,8 +1446,13 @@ predicted_l_plot = polyval(coeffs_l, linpoints);
 
 %exponential
 coeffs_e = solve_normal(t, log(c), 1);
-b_exp = coeffs_e(1); 
+display(coeffs_e);
+
 a_exp = exp(coeffs_e(2));
+display(a_exp);
+
+b_exp = coeffs_e(1);
+display(b_exp);
 
 predicted_e = a_exp * exp(b_exp * t);
 predicted_e_value = a_exp * exp(b_exp * t0);
@@ -1445,6 +1475,7 @@ xlabel('Time');
 ylabel('Concentration');
 legend('Data', 'Linear', 'Exponential');
 hold off;
+
 \end{lstlisting}
 
 \bigskip
