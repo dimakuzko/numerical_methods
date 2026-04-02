@@ -967,7 +967,55 @@ where $S(t)$ denotes the number of susceptible individuals, $I(t)$ denotes the n
 
 \subsection{Solution \& Results}
 
+To apply numerical methods such as Heun's method, we first need to express the given system of differential equations as an Initial Value Problem (IVP) in a general vector form:
+\begin{equation}
+\begin{cases}
+    \frac{dY}{dt} = F(t, Y(t)), \quad 0 \le t \le T, \\
+    Y(0) = Y_0
+\end{cases}
+\end{equation}
+
+Based on our SIRD model, the state vector $Y(t)$, the initial condition vector $Y_0$, and the vector function $F(t, Y(t))$ are extracted and defined as follows:
+
+\begin{equation}
+    Y(t) = 
+    \begin{bmatrix}
+        S(t) \\
+        I(t) \\
+        R(t) \\
+        D(t)
+    \end{bmatrix},
+    \quad
+    Y_0 = 
+    \begin{bmatrix}
+        S(0) \\
+        I(0) \\
+        R(0) \\
+        D(0)
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        997 \\
+        3 \\
+        0 \\
+        0
+    \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+    F(t, Y(t)) = 
+    \begin{bmatrix}
+        -\frac{\beta}{N}I(t)S(t) \\
+        \frac{\beta}{N}I(t)S(t) - (\alpha + \gamma) I(t) \\
+        \alpha I(t) \\
+        \gamma I(t)
+    \end{bmatrix}
+\end{equation}
+
+This general vector formulation allows us to substitute $F(t, Y(t))$ directly into the iterative formulas of the numerical solvers.
+
 \subsubsection{Task (a): MATLAB \textit{ode45}}
+
 
 \vspace{5pt}
 \noindent \textbf{Initial vector:}
@@ -1483,7 +1531,7 @@ hold off;
 \subsection*{MATLAB codes for Numerical Solution of Differential Equations}
 
 \begin{lstlisting}
-% a.m
+% A_and_B.m
 clear all; clc; format long;
 
 tspan = [0 180];
@@ -1491,40 +1539,7 @@ pop = 1000;
 beta = 0.4;
 alpha = 0.035;
 gamma = 0.005;
-
-F = @(t, Y) [
-    -(beta/pop) * Y(2) * Y(1); 
-    (beta/pop) * Y(2) * Y(1) - alpha * Y(2) - gamma * Y(2); 
-    alpha * Y(2); 
-    gamma * Y(2)
-];
-
-Y0 = [997; 3; 0; 0];
-
-[t, y] = ode45(F, tspan, Y0);
-
-S = y(:,1); 
-I = y(:,2);
-R = y(:,3);
-D = y(:,4);
-
-figure; hold on; grid on;
-plot(t, S, 'b')
-plot(t, I, 'r')
-plot(t, R, 'g')
-plot(t, D, 'w')
-
-legend('S', 'I', 'R', 'D')
-hold off;
-
-% b.m
-clear all; clc; format long;
-
-tspan = [0 180];
-pop = 1000;
-beta = 0.4;
-alpha = 0.035;
-gamma = 0.05;
+% gamma = 0.05;
 
 F = @(t, Y) [
     -(beta/pop) * Y(2) * Y(1); 
@@ -1572,51 +1587,14 @@ function [t, y] = heun(f, a, b, y0, N)
     end
 end
 
-% c.m
+% C_and_D.m
 clear all; clc; format long;
 
 a = 0;
 b = 180;
 tau = 2;
-N = (b - a) / tau; 
-
-beta = 0.4;
-alpha = 0.035;
-gamma = 0.005;
-pop = 1000;
-
-F = @(t, y) [
-    -(beta/pop) * y(2) * y(1);
-    (beta/pop) * y(2) * y(1) - alpha * y(2) - gamma * y(2);
-    alpha * y(2);
-    gamma * y(2)
-];
-
-y0 = [997; 3; 0; 0];
-
-[t, y] = heun(F, a, b, y0, N);
-
-S = y(:,1);
-I = y(:,2);
-R = y(:,3);
-D = y(:,4);
-
-figure; hold on; grid on;
-plot(t, S, 'b')
-plot(t, I, 'r')
-plot(t, R, 'g')
-plot(t, D, 'w')
-
-legend('S', 'I', 'R', 'D')
-hold off;
-
-% d.m
-clear all; clc; format long;
-
-a = 0;
-b = 180;
-tau = 12;
-N = (b - a) / tau; 
+% tau = 12;
+N = (b - a) / tau;
 
 beta = 0.4;
 alpha = 0.035;
